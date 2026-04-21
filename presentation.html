@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameStat.kz — Case Study</title>
+    <link rel="stylesheet" href="styles/presentation.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..800&family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="cursor"></div>
+
+    <div class="loader-wrap">
+      <div class="loader-text">ПОДГОТОВКА СТРУКТУРЫ РЕАЛИЗАЦИИ...</div>
+      <div class="progress-bar">
+        <div class="progress"></div>
+      </div>
+    </div>
+
+    <!-- Navigation / Header -->
+    <header class="pres-header">
+      <div class="logo">GameStat.kz <span>Защита работы</span></div>
+      <div class="controls">
+        <button class="theme-toggle" id="theme-toggle">Светлая тема</button>
+        <div class="awwwards-badge">A.</div>
+      </div>
+    </header>
+
+    <div class="scroll-container">
+      <!-- Panel 1: Введение -->
+      <section class="panel panel-1" id="panel-1">
+        <div class="panel-content">
+          <p class="subtitle">01 — Введение</p>
+          <h1 class="title">Индустриальный<br />Брутализм</h1>
+          <p class="desc">
+            Тема: «Разработка SPA для агрегации данных видеоигр с брутальным
+            интерфейсом». Цель — создать высоконагруженный каталог игр локально,
+            полностью отказавшись от готовых тяжелых JS-фреймворков в угоду
+            уникальному опыту.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="abstract-shape shape-1"></div>
+        </div>
+      </section>
+
+      <!-- Panel 2: Архитектура (Vanilla JS) -->
+      <section class="panel panel-2" id="panel-2">
+        <div class="panel-content">
+          <p class="subtitle">02 — Архитектура</p>
+          <h1 class="title">Zero-Framework<br />Архитектура</h1>
+          <p class="desc">
+            Проект построен на чистом JavaScript (объектно-модульный паттерн).
+            Главная сложность: реализация кастомного роутера и рендеринг
+            контента без Virtual DOM, что позволило сократить First Contentful
+            Paint до значений &lt; 1с.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="code-block">
+            <span>import</span> { renderStats }
+            <span>from</span> './stats.js';<br />
+            <span>class</span> Router {<br />
+            &nbsp;&nbsp;<span>navigate</span>(path) { /* update DOM */ }<br />
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 3: Обход CORS -->
+      <section class="panel panel-3" id="panel-3">
+        <div class="panel-content">
+          <p class="subtitle">03 — Работа с данными и API</p>
+          <h1 class="title">Гибридное API<br />и Прокси</h1>
+          <p class="desc">
+            Для стабильного получения данных от закрытых API (например, API
+            Steam) была решена проблема кросс-доменных блокировок. Успешно
+            применено проксирование через публичный шлюз с последующей
+            нормализацией и локальным кэшированием объектов.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="data-stream">
+            <div>[FETCH] api.steampowered.com...</div>
+            <div>[ERROR] CORS Policy Blocked</div>
+            <div>[PROXY] allorigins.win/get?url=</div>
+            <div>[SUCCESS] Payload Received</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 4: LocalStorage -> State -->
+      <section class="panel panel-4" id="panel-4">
+        <div class="panel-content">
+          <p class="subtitle">04 — Управление состоянием браузера</p>
+          <h1 class="title">Локальный<br />Менеджер Состояний</h1>
+          <p class="desc">
+            Был написан оригинальный самописный менеджер состояний (на базе
+            Storage API). Это превращает браузер в базу данных для формирования
+            Личного кабинета пользователя, где хранится его избранное и
+            отслеживаемые проекты без затрат на сервер.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="code-block">
+            <span>const</span> state = JSON.<span>parse</span>(<br />
+            &nbsp;&nbsp;localStorage.<span>getItem</span>('gs_user_data')<br />
+            );<br />
+            <span>restoreSession</span>(state);
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 5: GSAP / UI -->
+      <section class="panel panel-5" id="panel-5">
+        <div class="panel-content">
+          <p class="subtitle">05 — Интерфейс и Анимация</p>
+          <h1 class="title">Grid Layout<br />и GSAP Motion</h1>
+          <p class="desc">
+            Для визуализации огромных потоков данных стиль выведен к "Industrial
+            Brutalism". Использована сложная двумерная структура CSS Grid.
+            Микро-взаимодействия и горизонтальный параллакс контролируются
+            библиотекой GSAP ScrollTrigger.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="grid-visual">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 6: Обработка данных -->
+      <section class="panel panel-6" id="panel-6">
+        <div class="panel-content">
+          <p class="subtitle">06 — Производительность</p>
+          <h1 class="title">Умный Поиск<br />и Фильтрация</h1>
+          <p class="desc">
+            Асинхронный поиск по огромным массивам игр срабатывает мгновенно,
+            применяя паттерн "Debounce". Динамическая фильтрация и сортировка
+            происходят без перезагрузки страницы, что снижает нагрузку на CPU
+            клиента и гарантирует UX, сравнимый с нативными приложениями.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="code-block">
+            <span>function</span> search(q) {<br />
+            &nbsp;&nbsp;<span>return</span> cache.<span>filter</span>(<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;i => i.name.<span>includes</span>(q)<br />
+            &nbsp;&nbsp;);<br />
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 7: Адаптивность -->
+      <section class="panel panel-7" id="panel-7">
+        <div class="panel-content">
+          <p class="subtitle">07 — Адаптивность и Дизайн</p>
+          <h1 class="title">Mobile-First<br />Деградация</h1>
+          <p class="desc">
+            Mobile-First подход в условиях тяжелого табличного дизайна. Сложная
+            многоколоночная сетка (CSS Grid) для десктопов бесшовно
+            сворачивается в единый столбец карточек на мобильных устройствах,
+            масштабируя шрифты через Clamp() и Viewport Width.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="mobile-visual">
+            <div class="mob-header"></div>
+            <div class="mob-card"></div>
+            <div class="mob-card"></div>
+            <div class="mob-card"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 8: Loading State -->
+      <section class="panel panel-8" id="panel-8">
+        <div class="panel-content">
+          <p class="subtitle">08 — Пользовательский опыт</p>
+          <h1 class="title">Управление<br />Загрузкой</h1>
+          <p class="desc">
+            Ожидание ответа от внешних API часто вызывает отток пользователей.
+            Мы внедрили систему Skeleton Loaders и анимированных шкал прогресса,
+            чтобы удерживать внимание на этапе "гидратации" интерфейса, создавая
+            иллюзию непрерывного потока данных.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="data-stream">
+            <div style="width: 60%">━━━━━━━━━━░░░░░</div>
+            <div style="width: 80%">━━━━━━━━━━━━━░░</div>
+            <div style="width: 40%">━━━━━━░░░░░░░░░</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 9: Forms & Security -->
+      <section class="panel panel-9" id="panel-9">
+        <div class="panel-content">
+          <p class="subtitle">09 — Безопасность</p>
+          <h1 class="title">Валидация<br />и Изоляция</h1>
+          <p class="desc">
+            Ввод данных в личном кабинете и формах обратной связи проходит
+            строгую клиентскую валидацию через модули регулярных выражений
+            (RegEx). Реализована защита от XSS-инъекций путем жесткого
+            экранирования HTML-тегов перед сохранением в Storage.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="code-block">
+            <span>const</span> sanitize = (str) => {<br />
+            &nbsp;&nbsp;<span>return</span> str.<span>replace</span>(<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;/&lt;[^>]*>?/gm, ''<br />
+            &nbsp;&nbsp;);<br />
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 10: Analytics -->
+      <section class="panel panel-10" id="panel-10">
+        <div class="panel-content">
+          <p class="subtitle">10 — Визуализация</p>
+          <h1 class="title">Аналитика<br />и Рейтинги</h1>
+          <p class="desc">
+            Все данные конвертируются в понятные метрики. Динамический расчет
+            средних оценок, генерация графиков и цветовое кодирование
+            (красный-желтый-зеленый) для мгновенной оценки популярности игры без
+            необходимости читать тексты.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div
+            style="
+              display: flex;
+              gap: 20px;
+              align-items: flex-end;
+              height: 200px;
+            "
+          >
+            <div
+              style="width: 40px; height: 30%; background: var(--accent-color)"
+            ></div>
+            <div
+              style="width: 40px; height: 60%; background: var(--text-color)"
+            ></div>
+            <div
+              style="width: 40px; height: 100%; background: var(--accent-color)"
+            ></div>
+            <div
+              style="width: 40px; height: 40%; background: var(--text-color)"
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 11: Configuration -->
+      <section class="panel panel-11" id="panel-11">
+        <div class="panel-content">
+          <p class="subtitle">11 — Масштабируемость</p>
+          <h1 class="title">Модульная<br />Конфигурация</h1>
+          <p class="desc">
+            Изоляция глобальных переменных, ключей API, базовых URL и констант
+            тайм-аутов в отдельный файл конфигурации. Это позволяет за пару
+            секунд адаптировать проект под Production-сервер, поменять
+            дизайн-токены или сменить поставщика данных.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div class="code-block">
+            <span>export const</span> CONFIG = {<br />
+            &nbsp;&nbsp;<span>API_URL</span>: '...',<br />
+            &nbsp;&nbsp;<span>TIMEOUT</span>: 5000,<br />
+            &nbsp;&nbsp;<span>THEME</span>: 'dark'<br />
+            };
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 12: Separation of Concerns -->
+      <section class="panel panel-12" id="panel-12">
+        <div class="panel-content">
+          <p class="subtitle">12 — Паттерны проектирования</p>
+          <h1 class="title">Разделение<br />Слоев Логики</h1>
+          <p class="desc">
+            Строгое применение принципа "Separation of Concerns". Файлы api.js
+            (сетевой слой), storage.js (база данных) и ui.js (отрисовка)
+            существуют автономно. Любой модуль можно переписать или заменить, не
+            сломав остальную систему.
+          </p>
+        </div>
+        <div class="panel-visual">
+          <div
+            class="abstract-shape"
+            style="
+              border-radius: 0;
+              width: 300px;
+              height: 300px;
+              display: grid;
+              grid-template-rows: 1fr 1fr 1fr;
+              gap: 10px;
+              border: none;
+              animation: none;
+            "
+          >
+            <div
+              style="
+                background: var(--layer-bg);
+                border: 1px solid var(--accent-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--mono-font);
+              "
+            >
+              UI LAYER
+            </div>
+            <div
+              style="
+                background: var(--layer-bg);
+                border: 1px solid var(--accent-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--mono-font);
+              "
+            >
+              BUSINESS LOGIC
+            </div>
+            <div
+              style="
+                background: var(--layer-bg);
+                border: 1px solid var(--accent-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: var(--mono-font);
+              "
+            >
+              DATA LAYER
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel 13: Итог -->
+      <section class="panel panel-13" id="panel-13">
+        <div class="panel-content text-center">
+          <h1 class="title large-title">Конец презентации:<br />Запуск</h1>
+          <a href="index.html" class="explore-btn">ОТКРЫТЬ ПРОЕКТ</a>
+        </div>
+      </section>
+    </div>
+
+    <!-- Pagination Markers -->
+    <div class="pagination">
+      <div class="dot active" data-index="0"></div>
+      <div class="dot" data-index="1"></div>
+      <div class="dot" data-index="2"></div>
+      <div class="dot" data-index="3"></div>
+      <div class="dot" data-index="4"></div>
+      <div class="dot" data-index="5"></div>
+      <div class="dot" data-index="6"></div>
+      <div class="dot" data-index="7"></div>
+      <div class="dot" data-index="8"></div>
+      <div class="dot" data-index="9"></div>
+      <div class="dot" data-index="10"></div>
+      <div class="dot" data-index="11"></div>
+      <div class="dot" data-index="12"></div>
+    </div>
+
+    <!-- Navigation Arrows -->
+    <div class="nav-arrows">
+      <button class="nav-arrow prev" id="nav-prev">&#10094;</button>
+      <button class="nav-arrow next" id="nav-next">&#10095;</button>
+    </div>
+
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="js/presentation.js"></script>
+  </body>
+</html>

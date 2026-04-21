@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameStat.kz — Watchlist Archive</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="animBody" class="anim-viewport"></div>
+    <div id="mainContent" class="page-wrap">
+      <header class="site-header">
+        <div class="header-inner">
+          <div class="brand-group">
+            <a class="brand" href="index.html">GameStat</a>
+            <p class="tagline">Personal Watchlist // LocalStorage</p>
+            <div class="mobile-only-status">MODE: MOBILE_ARCHIVE</div>
+          </div>
+          <nav class="site-nav" aria-label="Main menu">
+            <a href="index.html">Catalog</a>
+            <a href="cabinet.html" class="is-active">Watchlist</a>
+            <a href="form.html">Add ID</a>
+            <a href="stats.html">Stats</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main-area">
+        <!-- Mechanical Console Hub -->
+        <section class="panel cabinet-layout" style="padding: 0;">
+          
+          <!-- LEFT: SYSTEM MONITOR -->
+          <aside class="diag-sidebar mechanical-panel" style="border-right: 1px solid #222; background: rgba(5,5,5,0.8);">
+            <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+            <div class="screw screw-tl"></div><div class="screw-tr screw"></div><div class="screw-bl screw"></div><div class="screw-br screw"></div>
+            
+            <div class="diag-item" style="margin-top: 20px;">
+              <span class="ui-label">Archive_Status</span>
+              <div class="diag-value">SYSTEM_ACTIVE</div>
+            </div>
+            <div class="diag-item">
+              <span class="ui-label">Node_Consistency</span>
+              <div class="diag-value" style="color: var(--accent)">OPTIMAL_LINK</div>
+            </div>
+            <div class="diag-item">
+              <span class="ui-label">Sync_Time</span>
+              <div id="sysTime" class="diag-value">00:00:00</div>
+            </div>
+            
+            <div class="grid-marker" data-hex="FF2A"></div>
+            
+            <div class="diag-item">
+              <span class="ui-label">Local_Archive_Load</span>
+              <div class="ui-value-large" id="cabinetCount" style="font-size: 4rem;">0</div>
+            </div>
+
+            <div class="data-stream-container" id="sysLogs" style="margin-top: 40px;">
+                <div>[0x0012] SYNCING_NODES...</div>
+                <div>[0x044A] PING_STABLE</div>
+                <div>[0x0F2E] HANDSHAKE_SUCCESS</div>
+                <div>[0x099B] ARCHIVE_LOADED</div>
+            </div>
+          </aside>
+
+          <!-- CENTER: MAIN ARCHIVE -->
+          <div class="console-window" style="border: none; background: transparent;">
+            <div class="console-header" style="background: #000;">
+                <div class="console-title">WATCHLIST_MANIFEST_PRIMARY</div>
+                <div class="console-dots"><div class="console-dot"></div><div class="console-dot"></div><div class="console-dot"></div></div>
+            </div>
+            <div class="panel-head" style="padding: 60px;">
+                <span class="ui-label" style="margin-bottom: 0;">Segment_Type: Archive</span>
+                <h1 class="ui-value-large" style="margin-bottom: 20px;">MANIFEST</h1>
+                <p id="cabinetStatus" class="status-line" style="font-size: 10px; opacity: 0.5; margin-bottom: 40px;"></p>
+                
+                <div id="cabinetGrid" class="card-grid card-grid--compact"></div>
+            </div>
+          </div>
+
+          <!-- RIGHT: ACTION & LOGS -->
+          <aside class="diag-sidebar" style="border-left: 1px solid #222; padding: 20px;">
+            <div class="diag-item">
+                <span class="ui-label">Operations</span>
+                <a class="btn btn-primary" href="form.html" style="display: block; width: 100%; text-align: center; font-weight: 900; margin-bottom: 10px;">INJECT_NODE</a>
+                <a class="btn" href="index.html" style="display: block; width: 100%; text-align: center;">ROOT_DIR</a>
+            </div>
+
+            <div class="grid-marker" data-hex="88C2"></div>
+
+            <div class="diag-item">
+                <span class="ui-label">Memory_Usage</span>
+                <div style="height: 4px; background: #222; position: relative; margin-top: 10px;">
+                    <div style="position: absolute; top: 0; left: 0; height: 100%; width: 64%; background: var(--accent);"></div>
+                </div>
+                <div class="diag-value" style="font-size: 10px; margin-top: 5px; opacity: 0.5;">ALLOCATED: 12.4 MB</div>
+            </div>
+
+            <div class="diag-item" style="margin-top: 50px;">
+                <span class="ui-label">System_Warning</span>
+                <p style="font-size: 10px; color: #666; line-height: 1.4;">Archive depth is linked to local persistence. Data loss at node termination possible.</p>
+            </div>
+          </aside>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>System_Core v2.4 // Local_Watchlist_Module</p>
+      </footer>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/cabinet.js"></script>
+  </body>
+</html>

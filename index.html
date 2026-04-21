@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameStat.kz — Game Archive</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+    <link rel="stylesheet" href="./styles/animation.css" />
+  </head>
+  <body>
+    <div id="animBody" class="splash-overlay" aria-hidden="true">
+      <div id="animCenter" class="splash-logo-wrap">
+        <svg
+          id="animLogo"
+          viewBox="0 0 333 333"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          aria-hidden="true"
+        >
+          <g id="animPath1">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M0 129.557C0 107.284 26.9286 96.1298 42.6777 111.879L60.8584 130.06V173.614C60.8584 228.843 105.63 273.614 160.858 273.614H204.413L221.121 290.322C236.87 306.071 225.716 333 203.443 333H25C11.1929 333 8.01834e-05 321.807 0 308V129.557Z"
+              fill="currentColor"
+            />
+          </g>
+          <g id="animPath2">
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M307.755 0C321.562 0.000105505 332.755 11.1929 332.755 25V203.198C332.755 225.471 305.826 236.625 290.077 220.876L269.796 200.595V164.981C269.796 109.753 225.024 64.9816 169.796 64.9814H134.183L111.879 42.6777C96.1299 26.9286 107.284 6.82142e-05 129.557 0H307.755"
+              fill="currentColor"
+            />
+          </g>
+          <g id="animRing">
+            <path
+              d="M135.15 136.621C151.92 119.851 179.111 119.851 195.881 136.622C212.652 153.393 212.652 180.583 195.881 197.353C179.111 214.124 151.92 214.124 135.15 197.354C118.379 180.583 118.379 153.392 135.15 136.621ZM152.399 153.87C145.211 161.058 145.21 172.711 152.398 179.899C159.585 187.086 171.239 187.085 178.426 179.898C185.613 172.71 185.613 161.058 178.426 153.87C171.239 146.683 159.586 146.683 152.399 153.87Z"
+              fill="currentColor"
+            />
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div id="mainContent" class="page-wrap">
+      <header class="site-header">
+        <div class="header-inner">
+          <div class="brand-group">
+            <a class="brand" href="index.html">GameStat</a>
+            <p class="tagline">Data-driven catalog // v2.0</p>
+            <div class="mobile-only-status">MODE: MOBILE_CONSOLE</div>
+          </div>
+          <nav class="site-nav" aria-label="Main menu">
+            <a href="index.html" class="is-active">Catalog</a>
+            <a href="cabinet.html">Watchlist</a>
+            <a href="form.html">Add ID</a>
+            <a href="stats.html">Stats</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main id="mainRegion" class="main-area main-area--grid">
+        <!-- Global Command Bar (Search & Toggles) -->
+        <div class="command-bar" style="grid-column: 1 / -1; margin-bottom: 20px;">
+            <div class="mechanical-panel" style="padding: 10px 20px; display: flex; align-items: center; gap: 15px;">
+                <span class="ui-label" style="margin: 0; min-width: 120px;">DISCOVER_NODE:</span>
+                <input type="text" id="catalogSearch" class="terminal-input" style="padding: 10px; border: none; font-size: 14px;" placeholder="ENTER_NAME_OR_ARCHIVE_ID..." autocomplete="off" />
+            </div>
+        </div>
+
+        <aside class="sidebar-filters panel mechanical-panel" id="filterSidebar" style="padding: 30px;">
+           <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+           <div class="sidebar-header" style="margin-bottom: 30px;">
+              <span class="ui-label">Filter_Config</span>
+              <button class="btn btn-ghost" style="padding:4px 8px; font-size:10px; opacity: 0.5;" id="resetFilters">RESET_ALL</button>
+           </div>
+           
+           <div class="field-group" style="margin-bottom: 25px;">
+              <label class="ui-label">Sort_Order</label>
+              <div class="tech-select" id="sortSelect">
+                  <div class="tech-select-trigger">NEWEST_FIRST</div>
+                  <div class="tech-select-options">
+                      <div class="tech-select-item is-selected" data-value="release">NEWEST_FIRST</div>
+                      <div class="tech-select-item" data-value="title">ALPHABETICAL</div>
+                  </div>
+                  <input type="hidden" id="filterSort" value="release" />
+              </div>
+           </div>
+
+           <div class="field-group" style="margin-bottom: 25px;">
+              <label class="ui-label">Developer_Manifest</label>
+              <div class="checkbox-list" id="filterDevsContainer" style="max-height: 200px; overflow-y: auto; font-family: var(--font-mono); font-size: 11px;">
+                  <!-- Populated via JS -->
+              </div>
+           </div>
+           
+           <button class="btn btn-primary" id="applyFiltersBtn" style="width:100%; height: 40px; font-size: 11px;">APPLY_SYNC</button>
+        </aside>
+
+        <section class="panel catalog-content" aria-labelledby="catalog-heading" style="background: transparent; border: none; padding: 0;">
+          <div class="mechanical-panel" style="padding: 40px;">
+              <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+              <div class="panel-head">
+                <span class="ui-label">Data_Stream: Primary</span>
+                <h1 class="ui-value-large" id="catalog-heading" style="margin-bottom: 10px;">ARCHIVE_GRID</h1>
+                <p id="catalogStatus" class="status-line" style="font-size: 10px; opacity: 0.5;"></p>
+              </div>
+          </div>
+
+          <div class="count-row" style="justify-content: flex-end;">
+            <a class="btn btn-secondary" href="form.html">Manual_Injection</a>
+          </div>
+
+          <div id="catalogGrid" class="card-grid" aria-live="polite"></div>
+          <div id="scrollSentinel" style="height: 20px; text-align: center; margin-top: 20px;" aria-hidden="true"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>System_Core v2.4 // Pure_JS // Global_Local_Storage</p>
+      </footer>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/loader.js"></script>
+  </body>
+</html>

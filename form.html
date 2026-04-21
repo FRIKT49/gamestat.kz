@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameStat.kz — добавить в список</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="animBody" class="anim-viewport"></div>
+    <div id="mainContent" class="page-wrap">
+      <header class="site-header">
+        <div class="header-inner">
+          <div class="brand-group">
+            <a class="brand" href="index.html">GameStat</a>
+            <p class="tagline">Data Injection // Submit</p>
+            <div class="mobile-only-status">MODE: MOBILE_INJECTION</div>
+          </div>
+          <nav class="site-nav" aria-label="Main menu">
+            <a href="index.html">Catalog</a>
+            <a href="cabinet.html">Watchlist</a>
+            <a href="form.html" class="is-active">Add ID</a>
+            <a href="stats.html">Stats</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main-area">
+        <section class="panel form-container" style="padding: 60px">
+          <div class="mechanical-panel form-panel">
+            <div class="corner-tl"></div>
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="corner-br"></div>
+            <div class="screw screw-tl"></div>
+            <div class="screw-tr screw"></div>
+            <div class="screw-bl screw"></div>
+            <div class="screw-br screw"></div>
+
+            <span class="ui-label">Injection_Interface // MANUAL_SUBMIT</span>
+            <h1
+              class="ui-value-large"
+              style="margin-top: 10px; margin-bottom: 40px"
+            >
+              INJECTION
+            </h1>
+
+            <form id="watchlistForm" class="form form-grid" novalidate>
+              <div style="grid-column: span 2">
+                <div class="diag-item">
+                  <span class="ui-label">Target_Archive</span>
+                  <div class="diag-value">LOCAL_PERSISTENCE // DB_0x1</div>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label class="ui-label" for="fieldGameId">System_ID</label>
+                <input
+                  type="text"
+                  id="fieldGameId"
+                  class="terminal-input"
+                  inputmode="numeric"
+                  placeholder="e.g. 730"
+                />
+                <div
+                  style="
+                    font-size: 8px;
+                    color: #444;
+                    margin-top: 5px;
+                    font-family: var(--font-mono);
+                  "
+                >
+                  REFER_TO_STEAM_ID_ARCHIVE
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label class="ui-label">Priority_Level</label>
+                <div class="tech-select" id="prioritySelect">
+                  <div class="tech-select-trigger">SELECT_LEVEL</div>
+                  <div class="tech-select-options">
+                    <div class="tech-select-item" data-value="low">LOW</div>
+                    <div class="tech-select-item" data-value="medium">MED</div>
+                    <div class="tech-select-item" data-value="high">
+                      HIGH (CRIT)
+                    </div>
+                  </div>
+                  <input type="hidden" id="fieldPriority" value="" />
+                </div>
+              </div>
+
+              <div class="field-group" style="grid-column: span 2">
+                <label class="ui-label" for="fieldNote"
+                  >Technical_Log (Injection Notes)</label
+                >
+                <textarea
+                  id="fieldNote"
+                  class="terminal-input"
+                  rows="4"
+                  placeholder="Log details..."
+                ></textarea>
+              </div>
+
+              <div
+                class="form-actions"
+                style="
+                  grid-column: span 2;
+                  margin-top: 20px;
+                  display: flex;
+                  gap: 20px;
+                "
+              >
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="
+                    flex: 2;
+                    height: 60px;
+                    font-weight: 900;
+                    letter-spacing: 2px;
+                  "
+                >
+                  EXECUTE_INJECTION
+                </button>
+                <a
+                  class="btn"
+                  href="index.html"
+                  style="
+                    flex: 1;
+                    height: 60px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                  "
+                  >ABORT</a
+                >
+              </div>
+            </form>
+
+            <div
+              class="grid-marker"
+              data-hex="88FF"
+              style="margin-top: 60px"
+            ></div>
+            <div
+              style="
+                font-family: var(--font-mono);
+                font-size: 8px;
+                color: #333;
+                text-align: center;
+              "
+            >
+              SECURE_HANDSHAKE_ESTABLISHED // GS-PROT-X
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>System_Core v2.4 // Asset_Injection_Module</p>
+      </footer>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/form.js"></script>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GameStat.kz — статистика</title>
+    <link rel="stylesheet" href="./styles/main.css" />
+  </head>
+  <body>
+    <div id="animBody" class="anim-viewport"></div>
+    <div id="mainContent" class="page-wrap">
+      <header class="site-header">
+        <div class="header-inner">
+          <div class="brand-group">
+            <a class="brand" href="index.html">GameStat</a>
+            <p class="tagline">Global Analytics // Real-time</p>
+            <div class="mobile-only-status">MODE: MOBILE_ANALYTICS</div>
+          </div>
+          <nav class="site-nav" aria-label="Main menu">
+            <a href="index.html">Catalog</a>
+            <a href="cabinet.html">Watchlist</a>
+            <a href="form.html">Add ID</a>
+            <a href="stats.html" class="is-active">Stats</a>
+            <a href="about.html">About</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="main-area">
+        <section class="panel stats-grid" style="padding: 20px;">
+          
+          <!-- MOD 1: GLOBAL ARCHIVE STATS -->
+          <div class="mechanical-panel" style="grid-column: span 2; padding: 30px;">
+            <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+            <span class="ui-label">Diagnostic_Module // 01</span>
+            <h1 class="ui-value-large" style="font-size: 3rem; margin-top: 10px;">ANALYTICS_ROOT</h1>
+            <p style="font-size: 10px; opacity: 0.4; margin-bottom: 20px;">REAL-TIME AGGREGATION FROM GLOBAL DATA NODES</p>
+            
+            <div style="display: flex; gap: 40px; margin-top: 30px;">
+                <div class="diag-item">
+                    <span class="ui-label">Archive_Depth</span>
+                    <div class="diag-value" id="statTotalApi" style="font-size: 2rem; font-weight: 900;">---</div>
+                </div>
+                <div class="diag-item">
+                    <span class="ui-label">Active_Handles</span>
+                    <div class="diag-value" id="statWatchlist" style="font-size: 2rem; font-weight: 900; color: var(--accent);">0</div>
+                </div>
+            </div>
+          </div>
+
+          <!-- MOD 2: PROCESS LOGS -->
+          <div class="mechanical-panel" style="padding: 20px;">
+            <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+            <span class="ui-label">Process_Feed</span>
+            <div class="data-stream-container" id="processLogs" style="height: 180px;">
+                <div>[0xEE21] SCAN_GLOBAL...</div>
+                <div>[0x441F] SYNC_LOCAL...</div>
+            </div>
+          </div>
+
+          <!-- MOD 3: PRICE SPECTRUM (CHART) -->
+          <div class="mechanical-panel" style="grid-column: span 2; padding: 30px;">
+            <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+            <span class="ui-label">Price_Spectrum_Distribution</span>
+            <div id="genreChart" class="bar-chart" style="height: 250px; margin-top: 20px;"></div>
+          </div>
+
+          <!-- MOD 4: MEMORY MAP / DEPLOYMENTS -->
+          <div class="mechanical-panel" style="padding: 20px;">
+            <div class="corner-tl"></div><div class="corner-tr"></div><div class="corner-bl"></div><div class="corner-br"></div>
+            <span class="ui-label">Recent_Deployments</span>
+            <div id="statPlatforms" style="font-family: var(--font-mono); font-size: 10px; color: #888; margin-top: 15px; line-height: 1.6;">
+                WAITING_FOR_HANDSHAKE...
+            </div>
+            
+            <div class="grid-marker" data-hex="A0F1" style="margin: 30px 0 15px;"></div>
+            
+            <span class="ui-label" style="color: #444;">Storage_Grid_Map</span>
+            <div class="storage-grid">
+                <!-- Mock grid of pixels -->
+                <div style="width:100%; height:8px; background: var(--accent);"></div>
+                <div style="width:100%; height:8px; background: #333;"></div>
+                <div style="width:100%; height:8px; background: #333;"></div>
+                <div style="width:100%; height:8px; background: var(--accent);"></div>
+                <div style="width:100%; height:8px; background: #222;"></div>
+                <div style="width:100%; height:8px; background: #333;"></div>
+                <div style="width:100%; height:8px; background: #333;"></div>
+                <div style="width:100%; height:8px; background: #222;"></div>
+                <div style="width:100%; height:8px; background: var(--accent);"></div>
+                <div style="width:100%; height:8px; background: #333;"></div>
+            </div>
+          </div>
+
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>System_Core v2.4 // Analytics_Module_Stable</p>
+      </footer>
+    </div>
+
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/stats.js"></script>
+  </body>
+</html>
